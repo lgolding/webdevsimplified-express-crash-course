@@ -5,5 +5,7 @@ app.listen(port, () => console.log(`Listening on port ${port}...`));
 
 app.get("/", (req, res) => {
   console.log(`Called GET on ${req.url}`);
-  res.status(500).send(`Error ${res.statusCode} from GET on ${req.url}`);
+  res.json({
+    message: `Some data from GET on ${req.url}`,
+  });
 });
