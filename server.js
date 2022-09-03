@@ -5,7 +5,7 @@ const port = 3000;
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { text: "World" });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}...`));
