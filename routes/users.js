@@ -32,6 +32,7 @@ userRouter
 
   userRouter.param("id", (req, res, next, id) => {
     console.log(`param middleware handling id ${id} for ${req.method}.`);
+    // How would this work in TypeScript?
     req.user = users[id];
     next();
   })
