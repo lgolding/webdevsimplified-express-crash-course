@@ -4,6 +4,7 @@ const userRouter = express.Router();
 const users = [{ firstName: "Larry" }, { firstName: "Terisa" }];
 
 userRouter.get("/", (req, res) => {
+  console.log(req.query.name ?? "No name supplied.");
   res.send("User List");
 });
 
