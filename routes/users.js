@@ -25,4 +25,9 @@ userRouter
     res.send(`Delete User ${req.params.id}`);
   });
 
+  userRouter.param("id", (req, res, next, id) => {
+    console.log(`param middleware handling id ${id} for ${req.method}.`);
+    next();
+  })
+
 module.exports = userRouter;
