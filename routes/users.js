@@ -1,7 +1,7 @@
 const express = require("express");
 const userRouter = express.Router();
 
-const users = [{ name: "Larry" }, { name: "Terisa" }];
+const users = [{ firstName: "Larry" }, { firstName: "Terisa" }];
 
 userRouter.get("/", (req, res) => {
   res.send("User List");
@@ -12,15 +12,23 @@ userRouter.get("/new", (req, res) => {
 });
 
 userRouter.post("/", (req, res) => {
-  const message = `Created new user ${req.body.firstName}`;
-  console.log(message);
-  res.send(message);
+  const isValid = true;
+  const firstName = req.body.firstName;
+  if (isValid) {
+    users.push({ firstName });
+    console.log(`Created new user ${firstName}`);
+    res.redirect(`/users/${users.length - 1}`);
+  } else {
+    console.log(`Error: could not create user ${firstName}`);
+    res.render("users/new", { firstName });
+  }
 });
 
 userRouter
   .route("/:id")
   .get((req, res) => {
-    res.send(`Get User ${req.params.id}: ${req.user.name}`);
+    console.log(req.user);
+    res.send(`Get User ${req.params.id}: ${req.user.firstName}`);
   })
   .put((req, res) => {
     res.send(`Update User ${req.params.id}`);
