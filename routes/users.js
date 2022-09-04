@@ -16,16 +16,13 @@ userRouter.post("/", (req, res) => {
 userRouter
   .route("/:id")
   .get((req, res) => {
-    const userId = req.params.id;
-    res.send(`Get User ${userId}`);
+    res.send(`Get User ${req.params.id}`);
   })
   .put((req, res) => {
-    const userId = req.params.id;
-    res.send(`Update User ${userId}`);
+    res.send(`Update User ${req.params.id}`);
   })
   .delete((req, res) => {
-    const userId = req.params.id;
-    res.send(`Delete User ${userId}`);
+    res.send(`Delete User ${req.params.id}`);
   });
 
 module.exports = userRouter;
