@@ -15,7 +15,17 @@ userRouter.post("/", (req, res) => {
 
 userRouter.get("/:id", (req, res) => {
   const userId = req.params.id;
-  res.send(`User ${userId}`);
+  res.send(`Get User ${userId}`);
+});
+
+userRouter.put("/:id", (req, res) => {
+  const userId = req.params.id;
+  res.send(`Update User ${userId}`);
+});
+
+userRouter.delete("/:id", (req, res) => {
+  const userId = req.params.id;
+  res.send(`Delete User ${userId}`);
 });
 
 module.exports = userRouter;
