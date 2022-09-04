@@ -1,6 +1,11 @@
 const express = require("express");
 const userRouter = express.Router();
 
+const users = [
+  { "name": "Larry" },
+  { "name" : "Terisa" }
+];
+
 userRouter.get("/", (req, res) => {
   res.send("User List");
 });
@@ -16,7 +21,7 @@ userRouter.post("/", (req, res) => {
 userRouter
   .route("/:id")
   .get((req, res) => {
-    res.send(`Get User ${req.params.id}`);
+    res.send(`Get User ${req.params.id}: ${req.user.name}`);
   })
   .put((req, res) => {
     res.send(`Update User ${req.params.id}`);
@@ -27,6 +32,7 @@ userRouter
 
   userRouter.param("id", (req, res, next, id) => {
     console.log(`param middleware handling id ${id} for ${req.method}.`);
+    req.user = users[id];
     next();
   })
 
