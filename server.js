@@ -11,7 +11,7 @@ function logger(req, res, next) {
 
 app.use(logger);
 
-app.get("/", (req, res) => {
+app.get("/", logger, (req, res) => {
   res.render("index", { text: "World" });
 });
 
