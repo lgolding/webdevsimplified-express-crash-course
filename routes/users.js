@@ -13,19 +13,19 @@ userRouter.post("/", (req, res) => {
   res.send("Created new user");
 });
 
-userRouter.get("/:id", (req, res) => {
-  const userId = req.params.id;
-  res.send(`Get User ${userId}`);
-});
-
-userRouter.put("/:id", (req, res) => {
-  const userId = req.params.id;
-  res.send(`Update User ${userId}`);
-});
-
-userRouter.delete("/:id", (req, res) => {
-  const userId = req.params.id;
-  res.send(`Delete User ${userId}`);
-});
+userRouter
+  .route("/:id")
+  .get((req, res) => {
+    const userId = req.params.id;
+    res.send(`Get User ${userId}`);
+  })
+  .put((req, res) => {
+    const userId = req.params.id;
+    res.send(`Update User ${userId}`);
+  })
+  .delete((req, res) => {
+    const userId = req.params.id;
+    res.send(`Delete User ${userId}`);
+  });
 
 module.exports = userRouter;
