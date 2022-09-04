@@ -5,12 +5,13 @@ const port = 3000;
 app.set("view engine", "ejs");
 
 function logger(req, res, next) {
-  console.log(`Request to URL: ${req.originalUrl}`);
+  console.log(`${req.method} request to ${req.originalUrl}`);
   next();
 }
 
 app.use(logger);
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", logger, (req, res) => {
   res.render("index", { text: "World" });
