@@ -10,6 +10,7 @@ function logger(req, res, next) {
 }
 
 app.use(logger);
+app.use(express.static("public"));
 
 app.get("/", logger, (req, res) => {
   res.render("index", { text: "World" });
